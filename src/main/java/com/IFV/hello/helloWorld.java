@@ -1,4 +1,4 @@
-package com.fast;
+package com.IFV.hello;
 
 public class helloWorld {
     public static void sayHello(){
