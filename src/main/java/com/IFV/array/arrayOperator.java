@@ -5,6 +5,8 @@ import java.util.Arrays;
 public class arrayOperator {
 
     /**
+     * time complexity O(m+n)
+     * space complexity O(1)
      * Merge two ordered arrays
      * @param nums1 array1
      * @param m     Number of elements in array 1
@@ -30,12 +32,14 @@ public class arrayOperator {
     }
 
     /**
+     * time complexity O(n)
+     * space complexity O(1)
      * Remove all elements with values equal to val and return the new length of the array after removal.
      * @param nums array
      * @param val   element
      * @return
      */
-    public static int onlyRemoveElement(int[] nums, int val) {
+    public static int removeElement(int[] nums, int val) {
         int left = 0;
         int right = nums.length;
         while (left < right) {
@@ -49,8 +53,50 @@ public class arrayOperator {
         return left;
     }
 
-    public static int[] removeElement(int[] nums, int val) {
-        int resultLength = onlyRemoveElement(nums , val);
-        return Arrays.copyOfRange(nums, 0, resultLength);
+
+    /**
+     * time complexity O(n)
+     * space complexity O(1)
+     * @param nums
+     * @return
+     */
+    public static int removeDuplicates(int[] nums){
+        if(nums == null || nums.length == 0) return 0;
+        int p = 0;
+        int q = 1;
+        while(q < nums.length){
+            if(nums[p] != nums[q]){
+                if(q - p > 1){
+                    nums[p + 1] = nums[q];
+                }
+                p++;
+            }
+            q++;
+        }
+        return p + 1;
     }
+
+    /**
+     * time complexity O(n)
+     * space complexity O(1)
+     * @param nums
+     * @return
+     */
+    public static int removeDuplicatesII(int[] nums){
+        int n = nums.length;
+        if (n <= 2) {
+            return n;
+        }
+        int slow = 2, fast = 2;
+        while (fast < n) {
+            if (nums[slow - 2] != nums[fast]) {
+                nums[slow] = nums[fast];
+                ++slow;
+            }
+            ++fast;
+        }
+        return slow;
+    }
+
+
 }
